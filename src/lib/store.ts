@@ -10,6 +10,7 @@ export interface Submission {
   status: 'Pending' | 'In Progress' | 'Resolved';
   mediaType?: 'image' | 'audio' | 'none';
   adminResponse?: string;
+  supports: number;
 }
 
 const generateSeedData = (): Submission[] => {
@@ -59,7 +60,8 @@ const generateSeedData = (): Submission[] => {
       timestamp: new Date(Date.now() - Math.floor(Math.random() * 86400000 * 7)).toISOString(), // Last 7 days
       status,
       mediaType,
-      adminResponse: status === 'Resolved' ? "We have dispatched a team and the issue is fully resolved." : (status === 'In Progress' ? "Our team is currently investigating this on site." : undefined)
+      adminResponse: status === 'Resolved' ? "We have dispatched a team and the issue is fully resolved." : (status === 'In Progress' ? "Our team is currently investigating this on site." : undefined),
+      supports: Math.floor(Math.random() * 80) // Seed random upvotes
     });
   }
   
@@ -90,7 +92,8 @@ export const addSubmission = (submission: Omit<Submission, 'id' | 'timestamp' | 
     id: generatedId,
     timestamp: new Date().toISOString(),
     status: 'Pending',
-    mediaType: Math.random() > 0.5 ? 'image' : 'audio' // Mock attaching media for demo purposes
+    mediaType: Math.random() > 0.5 ? 'image' : 'audio', // Mock attaching media for demo purposes
+    supports: 0
   };
   localStorage.setItem('safeconnect_submissions', JSON.stringify([newSubmission, ...current]));
   return generatedId;
@@ -102,6 +105,29 @@ export const updateSubmissionStatus = (id: string, status: 'Pending' | 'In Progr
   const updated = current.map(sub => {
     if (sub.id === id) {
       return { ...sub, status, adminResponse: response || sub.adminResponse };
+    }
+  });
+  localStorage.setItem('safeconnect_submissions', JSON.stringify(updated));
+};
+
+export const supportSubmission = (id: string) => {
+  if (typeof window === 'undefined') return;
+  const current = getSubmissions();
+  const updated = current.map(sub => {
+    if (sub.id === id) {
+      return { ...sub, supports: (sub.supports || 0) + 1 };
+    }
+    return sub;
+  });
+  localStorage.setItem('safeconnect_submissions', JSON.stringify(updated));
+};
+
+export const unsupportSubmission = (id: string) => {
+  if (typeof window === 'undefined') return;
+  const current = getSubmissions();
+  const updated = current.map(sub => {
+    if (sub.id === id) {
+      return { ...sub, supports: Math.max(0, (sub.supports || 0) - 1) };
     }
     return sub;
   });
