@@ -260,7 +260,7 @@ export default function Home() {
               <div className="step-number">2</div>
               <div className="step-content">
                 <div className="step-icon-wrapper">
-                  <img src="https://img.freepik.com/premium-photo/3d-ai-sentiment-analysis-customer-feedback-icons-ideal-isolated-vector-designs_980716-465713.jpg" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="AI Sentiment" />
+                  <img src="https://calln.com/wp-content/uploads/2019/10/Sentiment-Analysis-Infographic-860x600-860x600.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="AI Sentiment" />
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>AI Sentiment</h4>
                 <p style={{ color: '#64748b' }}>Gemini AI turns unstructured complaints into actionable Demand Heatmaps.</p>
