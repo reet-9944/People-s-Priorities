@@ -249,7 +249,7 @@ export default function Home() {
               <div className="step-number">1</div>
               <div className="step-content">
                 <div className="step-icon-wrapper">
-                  <img src="https://static.vecteezy.com/system/resources/previews/070/917/184/non_2x/3d-verified-badge-with-checkmark-isolated-on-transparent-background-png.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Verified" />
+                  <img src="https://th.bing.com/th/id/OIP.ndthhKCe5zuw6vkZVGK0TwHaHa?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Verified" />
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>Verified Anonymity</h4>
                 <p style={{ color: '#64748b' }}>Zero-Knowledge Proofs (ZKP) ensure your identity is never stored.</p>
@@ -260,7 +260,7 @@ export default function Home() {
               <div className="step-number">2</div>
               <div className="step-content">
                 <div className="step-icon-wrapper">
-                  <img src="https://img.freepik.com/premium-photo/3d-ai-sentiment-analysis-customer-feedback-icons-ideal-isolated-vector-designs_980716-465713.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} alt="AI Sentiment" />
+                  <img src="https://img.freepik.com/premium-photo/3d-ai-sentiment-analysis-customer-feedback-icons-ideal-isolated-vector-designs_980716-465713.jpg" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="AI Sentiment" />
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>AI Sentiment</h4>
                 <p style={{ color: '#64748b' }}>Gemini AI turns unstructured complaints into actionable Demand Heatmaps.</p>
@@ -271,7 +271,7 @@ export default function Home() {
               <div className="step-number">3</div>
               <div className="step-content">
                 <div className="step-icon-wrapper">
-                  <img src="https://tse1.mm.bing.net/th/id/OIP.1rFRO_h5HQUKhNcRhLOQjgHaH6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} alt="Data-Driven" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/13079/13079943.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Data-Driven" />
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>Data-Driven</h4>
                 <p style={{ color: '#64748b' }}>Politicians get objective justifications for project approvals and funding.</p>

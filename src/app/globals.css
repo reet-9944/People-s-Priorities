@@ -414,14 +414,13 @@ a {
   text-align: center;
 }
 .step-icon-wrapper {
-  width: 80px;
-  height: 80px;
+  width: 140px;
+  height: 140px;
   margin: 0 auto 1.5rem;
-  background: #f8fafc;
-  border-radius: 50%;
+  background: transparent;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   font-size: 2.5rem;
 }
 
