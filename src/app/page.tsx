@@ -358,7 +358,7 @@ export default function Home() {
             <div className="video-wrapper">
               {/* Concept Demo Video using a high-tech data visualization stock video */}
               <video autoPlay loop controls playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}>
-                <source src="https://cdn.pixabay.com/video/2020/02/17/32474-392476562_large.mp4" type="video/mp4" />
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-map-of-the-world-with-network-connections-31802-large.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               <div className="video-overlay-text">SafeConnect Concept Demo</div>
