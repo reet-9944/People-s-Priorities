@@ -45,7 +45,7 @@ export default function SubmitPage() {
       timerRef.current = setInterval(() => {
         setRecordingTime(prev => prev + 1);
       }, 1000);
-    } catch (err) {
+    } catch {
       alert("Microphone access denied. For this demo, please allow microphone access.");
     }
   };
@@ -55,7 +55,7 @@ export default function SubmitPage() {
       mediaRecorderRef.current.stop();
     }
     if (mediaRecorderRef.current && mediaRecorderRef.current.stream) {
-      // @ts-ignore
+      // @ts-expect-error
       mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
     }
     setIsRecording(false);
@@ -86,12 +86,12 @@ export default function SubmitPage() {
             } else {
               setLocationText(`${lat.toFixed(4)}, ${lon.toFixed(4)}`);
             }
-          } catch (err) {
+          } catch {
             setLocationText(`${lat.toFixed(4)}, ${lon.toFixed(4)}`);
           }
           setIsLocating(false);
         },
-        (error) => {
+        () => {
           alert("Could not get your location. Please check browser permissions.");
           setIsLocating(false);
         },
