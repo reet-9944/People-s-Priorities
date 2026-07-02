@@ -32,6 +32,7 @@ const AnimatedCounter = ({ end, duration = 2500, suffix = "" }: { end: number, d
 export default function Home() {
   const [stats, setStats] = useState({ total: 0, resolved: 0, inProgress: 0 });
   const [lang, setLang] = useState('en');
+  const [isDemoOpen, setIsDemoOpen] = useState(false);
 
   const translations = {
     en: {
@@ -113,6 +114,7 @@ export default function Home() {
           <div className="hero-buttons">
             <Link href="/submit"><button className="btn-teal">{t.submitBtn} (Anonymous)</button></Link>
             <Link href="/track"><button className="btn-secondary">{t.trackBtn}</button></Link>
+            <button className="btn-secondary" onClick={() => setIsDemoOpen(true)}>Watch Demo</button>
           </div>
         </div>
         {/* Animated Wavy Divider */}
@@ -299,7 +301,7 @@ export default function Home() {
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', zIndex: 10 }}>
           <Link href="/submit"><button className="btn-teal" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Submit Your Need Now</button></Link>
-          <button className="btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.1rem', background: 'transparent', color: '#fff', borderColor: '#fff' }}>Watch Demo Video</button>
+          <button className="btn-secondary" onClick={() => setIsDemoOpen(true)} style={{ padding: '1rem 2rem', fontSize: '1.1rem', background: 'transparent', color: '#fff', borderColor: '#fff' }}>Watch Demo Video</button>
         </div>
       </section>
 
@@ -345,6 +347,25 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Video Demo Modal */}
+      {isDemoOpen && (
+        <div className="video-modal-overlay" onClick={() => setIsDemoOpen(false)}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal-btn" onClick={() => setIsDemoOpen(false)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div className="video-wrapper">
+              {/* Concept Demo Video using a high-tech data visualization stock video */}
+              <video autoPlay loop controls playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px' }}>
+                <source src="https://cdn.pixabay.com/video/2020/02/17/32474-392476562_large.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="video-overlay-text">SafeConnect Concept Demo</div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
