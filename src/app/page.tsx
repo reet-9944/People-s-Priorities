@@ -99,13 +99,24 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="hero" style={{ position: 'relative' }}>
-        <img 
-          src="/images/hero.png" 
-          alt="Citizens discussing with official" 
-          className="hero-bg-image"
-        />
-        <div className="hero-overlay"></div>
+      <section className="hero hero-animated-bg" style={{ position: 'relative' }}>
+        <div className="hero-graphic-container">
+          <div className="pulse-ring ring-1"></div>
+          <div className="pulse-ring ring-2"></div>
+          <div className="pulse-ring ring-3"></div>
+          <div className="floating-glass-card">
+            🛡️
+          </div>
+          <div className="floating-node node-1">
+            <img src="https://static.vecteezy.com/system/resources/previews/070/917/184/non_2x/3d-verified-badge-with-checkmark-isolated-on-transparent-background-png.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Node" />
+          </div>
+          <div className="floating-node node-2">
+            <img src="https://img.freepik.com/premium-photo/3d-ai-sentiment-analysis-customer-feedback-icons-ideal-isolated-vector-designs_980716-465713.jpg" style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }} alt="Node" />
+          </div>
+          <div className="floating-node node-3">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.1rFRO_h5HQUKhNcRhLOQjgHaH6?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }} alt="Node" />
+          </div>
+        </div>
         <div className="hero-content" style={{ paddingBottom: '6rem' }}>
           <h1 className="hero-title">{t.heroTitle}</h1>
           <p className="hero-subtitle">
