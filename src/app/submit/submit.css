@@ -242,10 +242,37 @@
 }
 
 .helper-text {
-  font-size: 0.95rem;
-  color: #64748b;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+/* Mobile Overrides for Submit Form */
+@media (max-width: 768px) {
+  .submit-container {
+    padding: 1rem;
+  }
+  .form-header {
+    padding: 1.5rem;
+  }
+  .step-content {
+    padding: 1.5rem;
+  }
+  .form-actions.row {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+  .form-actions.row button {
+    width: 100%;
+    margin: 0 !important;
+  }
+  .media-buttons {
+    flex-direction: column;
+  }
+  .media-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .media-buttons {

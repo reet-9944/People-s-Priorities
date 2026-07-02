@@ -21,7 +21,26 @@
 .public-title {
   font-size: 1.5rem;
   font-weight: 900;
-  color: #0f172a;
+  color: #ef4444;
+}
+
+/* Mobile Overrides */
+@media (max-width: 768px) {
+  .public-content {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 1rem;
+  }
+  .feed-container {
+    max-height: 50vh;
+  }
+  .map-container {
+    height: 50vh;
+  }
+  .public-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 .dash-header-btn {
