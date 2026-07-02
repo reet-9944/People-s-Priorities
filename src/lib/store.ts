@@ -69,6 +69,12 @@ const generateSeedData = (): Submission[] => {
   return seed.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 };
 
+const triggerUpdateEvent = () => {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('safeconnect_update'));
+  }
+};
+
 export const getSubmissions = (): Submission[] => {
   if (typeof window === 'undefined') return [];
   const data = localStorage.getItem('safeconnect_submissions');
@@ -80,6 +86,7 @@ export const getSubmissions = (): Submission[] => {
   // Initialize with seed data if empty
   const seedData = generateSeedData();
   localStorage.setItem('safeconnect_submissions', JSON.stringify(seedData));
+  triggerUpdateEvent();
   return seedData;
 };
 
@@ -96,6 +103,7 @@ export const addSubmission = (submission: Omit<Submission, 'id' | 'timestamp' | 
     supports: 0
   };
   localStorage.setItem('safeconnect_submissions', JSON.stringify([newSubmission, ...current]));
+  triggerUpdateEvent();
   return generatedId;
 };
 
@@ -106,8 +114,10 @@ export const updateSubmissionStatus = (id: string, status: 'Pending' | 'In Progr
     if (sub.id === id) {
       return { ...sub, status, adminResponse: response || sub.adminResponse };
     }
+    return sub;
   });
   localStorage.setItem('safeconnect_submissions', JSON.stringify(updated));
+  triggerUpdateEvent();
 };
 
 export const supportSubmission = (id: string) => {
@@ -120,6 +130,7 @@ export const supportSubmission = (id: string) => {
     return sub;
   });
   localStorage.setItem('safeconnect_submissions', JSON.stringify(updated));
+  triggerUpdateEvent();
 };
 
 export const unsupportSubmission = (id: string) => {
@@ -132,4 +143,5 @@ export const unsupportSubmission = (id: string) => {
     return sub;
   });
   localStorage.setItem('safeconnect_submissions', JSON.stringify(updated));
+  triggerUpdateEvent();
 };

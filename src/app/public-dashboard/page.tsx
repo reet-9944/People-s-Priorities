@@ -12,7 +12,26 @@ export default function PublicDashboardPage() {
   const [supportedIds, setSupportedIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    setIssues(getSubmissions());
+    const fetchIssues = () => setIssues(getSubmissions());
+    fetchIssues();
+
+    // Listen for custom event from same tab
+    window.addEventListener('safeconnect_update', fetchIssues);
+    
+    // Listen for localStorage changes from other tabs
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'safeconnect_submissions') fetchIssues();
+    };
+    window.addEventListener('storage', handleStorage);
+
+    // Fallback polling for live real-time feel
+    const interval = setInterval(fetchIssues, 3000);
+
+    return () => {
+      window.removeEventListener('safeconnect_update', fetchIssues);
+      window.removeEventListener('storage', handleStorage);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleSupport = (id: string) => {

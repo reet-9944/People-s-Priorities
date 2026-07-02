@@ -41,8 +41,22 @@ export default function Dashboard() {
     }
 
     refreshData();
+    
+    // Listen for custom event from same tab
+    window.addEventListener('safeconnect_update', refreshData);
+    
+    // Listen for localStorage changes from other tabs
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'safeconnect_submissions') refreshData();
+    };
+    window.addEventListener('storage', handleStorage);
+
     const interval = setInterval(refreshData, 3000);
-    return () => clearInterval(interval);
+    return () => {
+      window.removeEventListener('safeconnect_update', refreshData);
+      window.removeEventListener('storage', handleStorage);
+      clearInterval(interval);
+    };
   }, [router]);
 
   const handleUpdateStatus = (status: 'Pending' | 'In Progress' | 'Resolved') => {

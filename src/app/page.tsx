@@ -323,17 +323,17 @@ export default function Home() {
           
           <div className="footer-links-group">
             <h4 className="footer-heading">Platform</h4>
-            <Link href="#">How It Works</Link>
-            <Link href="#">The Crisis</Link>
-            <Link href="#">Our Solution</Link>
+            <Link href="#how-it-works">How It Works</Link>
+            <Link href="#the-crisis">The Crisis</Link>
+            <Link href="#solution">Our Solution</Link>
             <Link href="/public-dashboard">Live Dashboard</Link>
           </div>
 
           <div className="footer-links-group">
             <h4 className="footer-heading">Legal & Support</h4>
-            <Link href="#">Privacy Policy</Link>
-            <Link href="#">Terms of Service</Link>
-            <Link href="#">Contact Support</Link>
+            <Link href="/">Privacy Policy</Link>
+            <Link href="/">Terms of Service</Link>
+            <Link href="/submit">Submit Issue</Link>
             <Link href="/login" className="admin-link">Admin Portal</Link>
           </div>
         </div>
