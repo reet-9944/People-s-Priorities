@@ -395,17 +395,17 @@ a {
   z-index: 0;
   line-height: 1;
   color: transparent;
-  background: linear-gradient(135deg, #0284c7 0%, #14b8a6 100%);
+  background: linear-gradient(135deg, #4A3525 0%, #1a1a1a 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  opacity: 0.15;
-  filter: drop-shadow(3px 5px 4px rgba(15, 23, 42, 0.2));
+  opacity: 0.85;
+  filter: drop-shadow(4px 6px 5px rgba(0, 0, 0, 0.3));
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .step-card:hover .step-number {
-  opacity: 0.35;
-  filter: drop-shadow(6px 10px 8px rgba(15, 23, 42, 0.25));
+  opacity: 1;
+  filter: drop-shadow(8px 12px 10px rgba(0, 0, 0, 0.4));
   transform: translateY(-5px) scale(1.05);
 }
 .step-content {
