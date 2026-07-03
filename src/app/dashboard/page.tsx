@@ -152,40 +152,40 @@ export default function Dashboard() {
         </div>
 
         <div className={`sidebar-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className={`menu-item ${currentView === 'overview' && !selectedFilter ? 'active' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'overview' && !selectedFilter ? '3px solid #0d9488' : 'none' }}>
+          <div className={`menu-item ${currentView === 'overview' && !selectedFilter ? 'active' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'overview' && !selectedFilter ? '3px solid #0d9488' : 'none' }}>
             <span>⊞</span> Overview Dashboard
           </div>
           
           <div className="sidebar-category">Filter by Category</div>
           
-          <div className={`menu-item ${selectedFilter === 'water' ? 'active-filter' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(selectedFilter === 'water' ? null : 'water'); }}>
+          <div className={`menu-item ${selectedFilter === 'water' ? 'active-filter' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(selectedFilter === 'water' ? null : 'water'); }}>
             <span>🚰</span> Water Supply
             <span className="menu-item-count">({dynamicThemes.find(t => t.id === 'water')?.count || 0})</span>
           </div>
-          <div className={`menu-item ${selectedFilter === 'health' ? 'active-filter' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(selectedFilter === 'health' ? null : 'health'); }}>
+          <div className={`menu-item ${selectedFilter === 'health' ? 'active-filter' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(selectedFilter === 'health' ? null : 'health'); }}>
             <span>🏥</span> Healthcare
             <span className="menu-item-count">({dynamicThemes.find(t => t.id === 'health')?.count || 0})</span>
           </div>
-          <div className={`menu-item ${selectedFilter === 'roads' ? 'active-filter' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(selectedFilter === 'roads' ? null : 'roads'); }}>
+          <div className={`menu-item ${selectedFilter === 'roads' ? 'active-filter' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(selectedFilter === 'roads' ? null : 'roads'); }}>
             <span>🛣️</span> Road Repair
             <span className="menu-item-count">({dynamicThemes.find(t => t.id === 'roads')?.count || 0})</span>
           </div>
-          <div className={`menu-item ${selectedFilter === 'waste' ? 'active-filter' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(selectedFilter === 'waste' ? null : 'waste'); }}>
+          <div className={`menu-item ${selectedFilter === 'waste' ? 'active-filter' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(selectedFilter === 'waste' ? null : 'waste'); }}>
             <span>♻️</span> Waste Mgt.
             <span className="menu-item-count">({dynamicThemes.find(t => t.id === 'waste')?.count || 0})</span>
           </div>
-          <div className={`menu-item ${selectedFilter === 'lighting' ? 'active-filter' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(selectedFilter === 'lighting' ? null : 'lighting'); }}>
+          <div className={`menu-item ${selectedFilter === 'lighting' ? 'active-filter' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(selectedFilter === 'lighting' ? null : 'lighting'); }}>
             <span>💡</span> Lighting
             <span className="menu-item-count">({dynamicThemes.find(t => t.id === 'lighting')?.count || 0})</span>
           </div>
-          <div className={`menu-item ${selectedFilter === 'other' ? 'active-filter' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(selectedFilter === 'other' ? null : 'other'); }}>
+          <div className={`menu-item ${selectedFilter === 'other' ? 'active-filter' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('overview'); setSelectedFilter(selectedFilter === 'other' ? null : 'other'); }}>
             <span>➕</span> Emerging
             <span className="menu-item-count" style={otherCount > 0 ? { color: '#0d9488', fontWeight: 'bold' } : {}}>({otherCount})</span>
           </div>
           
           <div className="sidebar-category">Tools</div>
           
-          <div className={`menu-item ${currentView === 'analytics' ? 'active' : ''}`} onClick={() => { setCurrentView('analytics'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'analytics' ? '3px solid #0d9488' : 'none' }}>
+          <div className={`menu-item ${currentView === 'analytics' ? 'active' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('analytics'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'analytics' ? '3px solid #0d9488' : 'none' }}>
             <span>📊</span> Analytics
           </div>
         </div>
