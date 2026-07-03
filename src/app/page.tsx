@@ -310,7 +310,7 @@ export default function Home() {
               <div className="step-number">4</div>
               <div className="step-content">
                 <div className="step-icon-wrapper">
-                  <img src="https://cdn-icons-png.flaticon.com/512/1055/1055685.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Transparent Tracking" />
+                  <img src="https://tse2.mm.bing.net/th/id/OIP.jtO3Zv4Bh17Rfs-zYdtpygHaHk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Transparent Tracking" />
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>Transparent Tracking</h4>
                 <p style={{ color: '#64748b' }}>Citizens track development progress live on a verified, public dashboard.</p>
