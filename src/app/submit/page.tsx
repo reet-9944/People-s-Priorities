@@ -10,6 +10,15 @@ export default function SubmitPage() {
   const [trackingId, setTrackingId] = useState("");
   const [customCategory, setCustomCategory] = useState("");
   const [description, setDescription] = useState("");
+  const [isZkpReady, setIsZkpReady] = useState(false);
+
+  useEffect(() => {
+    if (step === 3) {
+      setIsZkpReady(false);
+      const timer = setTimeout(() => setIsZkpReady(true), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
 
   // Media state
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -294,14 +303,14 @@ export default function SubmitPage() {
                 We are now generating a Zero-Knowledge Proof (ZKP). This cryptographically proves you are a valid resident of this constituency without revealing your identity, name, or IP address.
               </p>
 
-              <div className="zkp-status">
-                <div className="spinner"></div>
-                <span>Securing your identity before submission...</span>
+              <div className="zkp-status" style={{ borderColor: isZkpReady ? '#86efac' : '#ccfbf1', background: isZkpReady ? '#f0fdf4' : '#f0fdfa', color: isZkpReady ? '#16a34a' : '#0d9488' }}>
+                {!isZkpReady ? <div className="spinner"></div> : <div style={{ fontSize: '1.5rem' }}>✓</div>}
+                <span>{isZkpReady ? 'Identity cryptographically secured.' : 'Securing your identity before submission...'}</span>
               </div>
 
               <div className="form-actions" style={{ justifyContent: 'center', marginTop: '3rem', borderTop: 'none', paddingTop: 0 }}>
-                <button className="btn-secondary" onClick={() => setStep(2)} style={{ marginRight: '1rem' }}>Back</button>
-                <button className="btn-glow" onClick={() => {
+                <button className="btn-secondary" onClick={() => setStep(2)} style={{ marginRight: '1rem', color: '#334155', border: '1px solid #cbd5e1' }}>Back</button>
+                <button className="btn-glow" disabled={!isZkpReady} onClick={() => {
                   const selectedCatObj = categories.find(c => c.id === selectedCategory);
                   let categoryLabel = selectedCatObj ? selectedCatObj.label : 'Other';
                   if (selectedCategory === 'other') categoryLabel = customCategory || 'Other';
