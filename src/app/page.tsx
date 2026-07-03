@@ -305,6 +305,17 @@ export default function Home() {
                 <p style={{ color: '#64748b' }}>Politicians get objective justifications for project approvals and funding.</p>
               </div>
             </div>
+
+            <div className="step-card">
+              <div className="step-number">4</div>
+              <div className="step-content">
+                <div className="step-icon-wrapper">
+                  <img src="https://cdn-icons-png.flaticon.com/512/1055/1055685.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Transparent Tracking" />
+                </div>
+                <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>Transparent Tracking</h4>
+                <p style={{ color: '#64748b' }}>Citizens track development progress live on a verified, public dashboard.</p>
+              </div>
+            </div>
         </div>
 
         <div className="solution-image-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '700px', margin: '4rem auto 0' }}>
