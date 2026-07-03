@@ -1013,7 +1013,10 @@ a {
     gap: 0.5rem;
   }
   
-  /* Typography */
+  /* Typography & Spacing */
+  .hero {
+    padding-top: 13rem;
+  }
   .hero-title {
     font-size: 2.5rem;
     line-height: 1.2;
