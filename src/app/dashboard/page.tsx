@@ -278,7 +278,7 @@ export default function Dashboard() {
           {currentView === 'overview' ? (
             <div className="dashboard-grid">
               {/* Map Area */}
-              <div className="map-container" style={{ position: 'relative', zIndex: 0, overflow: 'hidden', borderRadius: '12px', border: '1px solid #e2e8f0', height: '600px' }}>
+              <div className="map-container" style={{ position: 'relative', zIndex: 0, overflow: 'hidden', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
                 <DashboardMap submissions={filteredSubmissions} />
               </div>
 
