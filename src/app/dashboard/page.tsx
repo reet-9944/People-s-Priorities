@@ -20,6 +20,7 @@ export default function Dashboard() {
   // Auth state
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Modal state
   const [selectedReport, setSelectedReport] = useState<Submission | null>(null);
@@ -137,11 +138,20 @@ export default function Dashboard() {
       {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-logo">
-          <div className="logo-icon">C</div>
-          <span>Constituency Pulse</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <div className="logo-icon">C</div>
+            <span>Constituency Pulse</span>
+          </div>
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.5rem', cursor: 'pointer' }}
+          >
+            ☰
+          </button>
         </div>
 
-        <div className="sidebar-menu">
+        <div className={`sidebar-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           <div className={`menu-item ${currentView === 'overview' && !selectedFilter ? 'active' : ''}`} onClick={() => { setCurrentView('overview'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'overview' && !selectedFilter ? '3px solid #0d9488' : 'none' }}>
             <span>⊞</span> Overview Dashboard
           </div>
