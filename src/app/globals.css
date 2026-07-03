@@ -627,6 +627,16 @@ a {
   color: #475569;
   margin-bottom: 1.5rem;
 }
+
+.confidence-section {
+  padding: 2rem 5% 10rem;
+}
+@media (max-width: 768px) {
+  .confidence-section {
+    padding: 2rem 5% 4rem;
+  }
+}
+
 .highlight-list {
   list-style: none;
   margin-top: 2rem;
@@ -1093,11 +1103,15 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    height: auto;
   }
-  .metric-box {
+  .metric-square {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
     transform: none !important;
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
   }
   
   /* Slanted Angles Flattening (prevents slicing text on thin phones) */

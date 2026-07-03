@@ -162,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* Confidence Metrics Section */}
-      <div className="slanted-bottom" style={{ padding: '2rem 5% 10rem', position: 'relative', background: '#faf8f5', backgroundImage: 'radial-gradient(#e2e8f0 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}>
+      <div className="slanted-bottom confidence-section" style={{ position: 'relative', background: '#faf8f5', backgroundImage: 'radial-gradient(#e2e8f0 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}>
         <div className="content-section" style={{ background: 'transparent', padding: '0', maxWidth: '1200px', margin: '0 auto' }}>
           <div className="content-text">
             <h2 className="content-heading" style={{ fontSize: '3.5rem', marginBottom: '1rem', lineHeight: 1.1, color: '#0f172a' }}>Confidence in<br/>Your Impact</h2>
