@@ -201,7 +201,10 @@ export default function Dashboard() {
               <input type="text" placeholder="Search reports..." />
             </div>
             <Link href="/submit" target="_blank" style={{ textDecoration: 'none' }}>
-              <button className="btn-secondary" style={{ padding: '0.4rem 1rem', fontSize: '0.9rem', borderColor: '#0d9488', color: '#0d9488', background: '#f0fdfa' }}>
+              <button style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', border: '1px solid #0f172a', borderRadius: '6px', color: '#0f172a', background: '#f8fafc', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#e2e8f0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#f8fafc'}
+              >
                 + Submit Test Report
               </button>
             </Link>
