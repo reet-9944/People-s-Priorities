@@ -909,7 +909,7 @@ a {
 
 .footer-huge-logo {
   text-align: center;
-  font-size: clamp(3rem, 12vw, 15rem);
+  font-size: clamp(2rem, 9vw, 12rem);
   font-weight: 900;
   color: rgba(255, 255, 255, 0.2);
   -webkit-text-stroke: 3px rgba(0, 0, 0, 0.9);
