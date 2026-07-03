@@ -1105,16 +1105,31 @@ a {
   .staggered-metrics-container {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 0;
     height: auto;
+    margin-top: 2rem;
   }
   .metric-square {
     position: relative !important;
     top: auto !important;
     left: auto !important;
-    transform: none !important;
-    width: 100%;
-    max-width: 250px;
+    width: 150px;
+  }
+  .ms-1 { 
+    margin-right: 60px; 
+    transform: rotate(-5deg) !important; 
+  }
+  .ms-2 { 
+    margin-left: 60px; 
+    transform: rotate(8deg) !important; 
+    margin-top: -40px;
+    z-index: 4; 
+  }
+  .ms-3 { 
+    margin-right: 40px; 
+    transform: rotate(-3deg) !important; 
+    margin-top: -30px;
+    z-index: 5; 
   }
   
   /* Slanted Angles Flattening (prevents slicing text on thin phones) */
