@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState, useRef } from 'react';
 import { getSubmissions } from '@/lib/store';
+import CanvasParticles from '@/components/CanvasParticles';
 
 // Modern Tri-color Brand Logo
 const BrandLogo = ({ showText = true, isDark = false }: { showText?: boolean, isDark?: boolean }) => {
@@ -346,6 +347,7 @@ export default function Home() {
 
       {/* Modern Footer */}
       <footer className="modern-footer">
+        <CanvasParticles />
         <div className="footer-top-grid">
           <div className="footer-column">
             <h4 className="footer-title">Company</h4>
