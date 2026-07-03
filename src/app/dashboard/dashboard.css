@@ -621,7 +621,10 @@
     padding: 1rem;
   }
   .map-container {
+    flex: none;
     height: 350px;
+    min-height: 350px;
+    width: 100%;
   }
 }
 
