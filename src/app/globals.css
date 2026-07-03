@@ -388,14 +388,17 @@ a {
 
 /* Floating 3-Steps Grid (from first screenshot) */
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2.5rem;
   position: relative;
   z-index: 10;
   margin-top: 3rem;
 }
 .step-card {
+  flex: 1 1 300px;
+  max-width: 350px;
   background: #fff;
   border-radius: 20px;
   padding: 2.5rem;

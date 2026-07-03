@@ -302,18 +302,7 @@ export default function Home() {
                   <img src="https://cdn-icons-png.flaticon.com/512/13079/13079943.png" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Data-Driven" />
                 </div>
                 <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>Data-Driven</h4>
-                <p style={{ color: '#64748b' }}>Politicians get objective justifications for project approvals and funding.</p>
-              </div>
-            </div>
-
-            <div className="step-card">
-              <div className="step-number">4</div>
-              <div className="step-content">
-                <div className="step-icon-wrapper">
-                  <img src="https://tse2.mm.bing.net/th/id/OIP.jtO3Zv4Bh17Rfs-zYdtpygHaHk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" style={{ width: '100%', height: '100%', objectFit: 'contain' }} alt="Transparent Tracking" />
-                </div>
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem' }}>Transparent Tracking</h4>
-                <p style={{ color: '#64748b' }}>Citizens track development progress live on a verified, public dashboard.</p>
+                <p style={{ color: '#64748b' }}>Politicians get objective justifications for project approvals and funding, ensuring development aligns perfectly with real community needs and analytics.</p>
               </div>
             </div>
         </div>
