@@ -238,7 +238,12 @@ export default function Dashboard() {
               <p className="page-subtitle">Live Data &bull; {submissions.length} Total Reports Displayed</p>
             </div>
             {currentView === 'overview' && (
-              <button className="btn-secondary" style={{ color: '#0f172a', borderColor: '#cbd5e1' }} onClick={() => setSelectedFilter(null)}>
+              <button 
+                style={{ padding: '0.5rem 1rem', fontSize: '0.9rem', border: '1px solid #cbd5e1', borderRadius: '6px', color: '#0f172a', background: '#f8fafc', fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s' }} 
+                onClick={() => setSelectedFilter(null)}
+                onMouseEnter={(e) => e.currentTarget.style.background = '#e2e8f0'}
+                onMouseLeave={(e) => e.currentTarget.style.background = '#f8fafc'}
+              >
                 {selectedFilter ? 'Clear Filter ✕' : 'Filter ⌄'}
               </button>
             )}
