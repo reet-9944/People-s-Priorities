@@ -305,9 +305,9 @@ export default function Home() {
         <p className="content-paragraph" style={{ maxWidth: '600px', margin: '0 auto 2.5rem', color: '#cbd5e1' }}>
           Join thousands of citizens making their voices heard securely and anonymously. Be a part of data-driven local development.
         </p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', zIndex: 10 }}>
-          <Link href="/submit"><button className="btn-teal" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Submit Your Need Now</button></Link>
-          <button className="btn-secondary" onClick={() => setIsDemoOpen(true)} style={{ padding: '1rem 2rem', fontSize: '1.1rem', background: 'transparent', color: '#fff', borderColor: '#fff' }}>Watch Demo Video</button>
+        <div className="footer-cta-buttons" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', zIndex: 10, width: '100%', maxWidth: '400px', margin: '0 auto' }}>
+          <Link href="/submit" style={{ width: '100%' }}><button className="btn-teal" style={{ padding: '1rem 2rem', fontSize: '1.1rem', width: '100%' }}>Submit Your Need Now</button></Link>
+          <button className="btn-secondary" onClick={() => setIsDemoOpen(true)} style={{ padding: '1rem 2rem', fontSize: '1.1rem', background: 'transparent', color: '#fff', borderColor: '#fff', width: '100%' }}>Watch Demo Video</button>
         </div>
       </section>
 
