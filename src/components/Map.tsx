@@ -14,19 +14,14 @@ export default function DashboardMap({ submissions }: MapProps) {
   // Try to find the latest valid coordinate to center the map, otherwise default to a central location
   const validSubs = submissions.filter(s => s.lat && s.lon);
   
-  const [center, setCenter] = useState<[number, number]>([28.6139, 77.2090]); // Default New Delhi
-
-  useEffect(() => {
-    if (validSubs.length > 0) {
-      // Center on the most recent submission
-      setCenter([validSubs[0].lat!, validSubs[0].lon!]);
-    }
-  }, [validSubs.length]);
+  // Calculate initial center synchronously to avoid unmounting the MapContainer
+  const initialCenter: [number, number] = validSubs.length > 0 
+    ? [validSubs[0].lat!, validSubs[0].lon!] 
+    : [28.6139, 77.2090]; // Default New Delhi
 
   return (
     <MapContainer 
-      key={center.join(',')} // Force re-render when center changes significantly
-      center={center} 
+      center={initialCenter} 
       zoom={13} 
       style={{ height: "100%", width: "100%", zIndex: 0, borderRadius: '12px' }}
       zoomControl={false}
