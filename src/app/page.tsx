@@ -170,7 +170,7 @@ export default function Home() {
               Real-time transparency into how citizen voices are shaping local development securely.
             </p>
           </div>
-          <div className="content-image-container" style={{ background: 'transparent', boxShadow: 'none', display: 'flex', justifyContent: 'center' }}>
+          <div className="content-image-container" style={{ background: 'transparent', boxShadow: 'none', display: 'flex', justifyContent: 'center', overflow: 'visible' }}>
             <div className="staggered-metrics-container">
               <div className="metric-square ms-1">
                 <div className="metric-label">Engaged</div>
