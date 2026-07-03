@@ -205,7 +205,7 @@
   cursor: not-allowed;
 }
 
-.btn-secondary {
+.btn-submit-secondary {
   padding: 0.8rem 2.5rem;
   font-size: 1.1rem;
   font-weight: 600;
@@ -216,7 +216,7 @@
   cursor: pointer;
   transition: all 0.2s;
 }
-.btn-secondary:hover {
+.btn-submit-secondary:hover {
   background: #f1f5f9;
   border-color: #94a3b8;
 }

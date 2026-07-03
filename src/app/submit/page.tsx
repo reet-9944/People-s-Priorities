@@ -289,7 +289,7 @@ export default function SubmitPage() {
               </div>
 
               <div className="form-actions row">
-                <button className="btn-secondary" onClick={() => setStep(1)}>Back</button>
+                <button className="btn-submit-secondary" onClick={() => setStep(1)}>Back</button>
                 <button className="btn-glow" onClick={() => setStep(3)}>Continue to Step 3</button>
               </div>
             </div>
@@ -309,7 +309,7 @@ export default function SubmitPage() {
               </div>
 
               <div className="form-actions" style={{ justifyContent: 'center', marginTop: '3rem', borderTop: 'none', paddingTop: 0 }}>
-                <button className="btn-secondary" onClick={() => setStep(2)} style={{ marginRight: '1rem', color: '#334155', border: '1px solid #cbd5e1' }}>Back</button>
+                <button className="btn-submit-secondary" onClick={() => setStep(2)} style={{ marginRight: '1rem', color: '#334155', border: '1px solid #cbd5e1' }}>Back</button>
                 <button className="btn-glow" disabled={!isZkpReady} onClick={() => {
                   const selectedCatObj = categories.find(c => c.id === selectedCategory);
                   let categoryLabel = selectedCatObj ? selectedCatObj.label : 'Other';
@@ -345,7 +345,7 @@ export default function SubmitPage() {
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                <Link href="/"><button className="btn-secondary" style={{ padding: '0.75rem 1.5rem' }}>Return Home</button></Link>
+                <Link href="/"><button className="btn-submit-secondary" style={{ padding: '0.75rem 1.5rem' }}>Return Home</button></Link>
                 <Link href="/track"><button className="btn-teal" style={{ padding: '0.75rem 1.5rem' }}>Track Status Now</button></Link>
               </div>
             </div>
