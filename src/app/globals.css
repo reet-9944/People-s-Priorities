@@ -920,8 +920,12 @@ a {
 
 @media (max-width: 768px) {
   .footer-top-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
+  }
+  .footer-column:nth-child(1),
+  .footer-column:nth-child(4) {
+    grid-column: span 2;
   }
   .footer-bottom-info {
     flex-direction: column;
