@@ -593,8 +593,9 @@
   .search-bar input {
     width: 100%;
   }
-  .dashboard-content {
+  .dashboard-grid {
     flex-direction: column;
+    height: auto;
     overflow: visible;
   }
   .stats-sidebar {
