@@ -33,6 +33,7 @@ export default function Home() {
   const [stats, setStats] = useState({ total: 0, resolved: 0, inProgress: 0 });
   const [lang, setLang] = useState('en');
   const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const translations = {
     en: {
@@ -77,18 +78,22 @@ export default function Home() {
     <main>
       {/* Navigation */}
       <nav className="glass-nav">
-        <div style={{ fontWeight: 800, fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ color: '#0d9488' }}>🛡️</span> SafeConnect
+        <div className="nav-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="logo-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span style={{ fontSize: '1.25rem', fontWeight: 700 }}>SafeConnect</span>
         </div>
-        <div className="nav-links">
-          <select 
-            value={lang} 
-            onChange={(e) => setLang(e.target.value)}
-            style={{ background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', padding: '0.4rem', borderRadius: '4px', outline: 'none', cursor: 'pointer' }}
-          >
-            <option value="en" style={{ color: '#0f172a' }}>English</option>
-            <option value="hi" style={{ color: '#0f172a' }}>हिन्दी (Hindi)</option>
-            <option value="ta" style={{ color: '#0f172a' }}>தமிழ் (Tamil)</option>
+        <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+             <line x1="3" y1="12" x2="21" y2="12"></line>
+             <line x1="3" y1="6" x2="21" y2="6"></line>
+             <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
+          <select value={lang} onChange={(e) => setLang(e.target.value)} className="lang-select">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="ta">தமிழ்</option>
           </select>
           <Link href="#how-it-works" className="nav-link">{t.howItWorks}</Link>
           <Link href="#the-problem" className="nav-link">{t.crisis}</Link>
@@ -279,8 +284,14 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="solution-image" style={{ maxWidth: '500px', margin: '4rem auto 0', background: '#ffffff', borderRadius: '24px', padding: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src="https://assets-v2.lottiefiles.com/a/f1e1a7d0-1d3d-11ee-91c5-27c399cace92/2kbrVRXP9B.gif" alt="Security Animation" style={{ width: '100%', height: 'auto', display: 'block' }} />
+        <div className="solution-image-wrapper" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '700px', margin: '4rem auto 0' }}>
+          <div className="solution-image" style={{ background: '#ffffff', borderRadius: '24px', padding: '2rem', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', width: '100%', marginBottom: '2rem' }}>
+            <img src="https://assets-v2.lottiefiles.com/a/f1e1a7d0-1d3d-11ee-91c5-27c399cace92/2kbrVRXP9B.gif" alt="Security Animation" style={{ width: '100%', height: 'auto', display: 'block', maxWidth: '400px', margin: '0 auto' }} />
+          </div>
+          <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0f172a', marginBottom: '1rem', textAlign: 'center' }}>Military-Grade Security Architecture</h3>
+          <p style={{ color: '#64748b', textAlign: 'center', fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '600px' }}>
+            Every interaction on our platform is protected by advanced AES-256 encryption. We utilize cryptographic Zero-Knowledge Proofs (ZKPs) to verify your constituency and eligibility without ever revealing your personal identity, device information, or IP address.
+          </p>
         </div>
       </div>
 
