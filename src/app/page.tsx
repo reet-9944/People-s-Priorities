@@ -1,7 +1,30 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { getSubmissions } from '@/lib/store';
+
+// Modern Tri-color Brand Logo
+const BrandLogo = ({ showText = true, isDark = false }: { showText?: boolean, isDark?: boolean }) => {
+  const textColor = isDark ? '#ffffff' : '#0f172a';
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <svg viewBox="0 0 100 100" style={{ width: '42px', height: '42px', flexShrink: 0 }}>
+        <path d="M 25 25 Q 25 15 35 20 L 75 40 Q 85 45 85 50 L 55 50 L 35 35 Z" fill="#f97316" />
+        <path d="M 85 50 Q 85 55 75 60 L 35 80 Q 25 85 25 75 L 35 65 L 55 50 Z" fill="#dc2626" />
+        <path d="M 25 25 L 35 35 L 35 65 L 25 75 Z" fill={isDark ? '#e0e7ff' : '#032b5e'} />
+        <path d="M 25 25 Q 25 15 35 20 L 35 35 L 25 35 Z" fill={isDark ? '#e0e7ff' : '#032b5e'} />
+        <path d="M 25 75 Q 25 85 35 80 L 35 65 L 25 65 Z" fill={isDark ? '#e0e7ff' : '#032b5e'} />
+      </svg>
+      {showText && (
+        <div style={{ borderLeft: '2px solid #f97316', paddingLeft: '0.75rem', display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+          <span style={{ color: textColor, fontWeight: 900, fontSize: '0.95rem', letterSpacing: '0.5px' }}>SAFE</span>
+          <span style={{ color: textColor, fontWeight: 900, fontSize: '0.95rem', letterSpacing: '0.5px' }}>PROUD</span>
+          <span style={{ color: textColor, fontWeight: 900, fontSize: '0.95rem', letterSpacing: '0.5px' }}>CONNECTED</span>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const AnimatedCounter = ({ end, duration = 2500, suffix = "" }: { end: number, duration?: number, suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -78,10 +101,9 @@ export default function Home() {
     <main>
       {/* Navigation */}
       <nav className="glass-nav">
-        <div className="nav-brand">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="logo-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <span style={{ fontSize: '1.25rem', fontWeight: 700 }}>SafeConnect</span>
-        </div>
+        <Link href="/" className="nav-brand" style={{ textDecoration: 'none' }}>
+          <BrandLogo />
+        </Link>
         <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
              <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -324,44 +346,63 @@ export default function Home() {
 
       {/* Modern Footer */}
       <footer className="modern-footer">
-        <div className="footer-container">
-          <div className="footer-brand">
-            <div className="footer-logo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="logo-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>SafeConnect</span>
-            </div>
-            <p className="footer-description">
-              Empowering citizens through secure, anonymous, data-driven local development tracking.
-            </p>
-            <div className="footer-socials">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
-              <a href="https://github.com/reet-9944" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+        <div className="footer-top-grid">
+          <div className="footer-column">
+            <h4 className="footer-title">Company</h4>
+            <div className="footer-contact-info">
+              <p>📍 123 Secure Building, New Delhi, IN</p>
+              <p>📧 contact@safeconnect.gov.in</p>
+              <p>📞 +91 1800 123 4567</p>
             </div>
           </div>
-          
-          <div className="footer-links-group">
-            <h4 className="footer-heading">Platform</h4>
-            <Link href="#how-it-works">How It Works</Link>
-            <Link href="#the-crisis">The Crisis</Link>
-            <Link href="#solution">Our Solution</Link>
-            <Link href="/public-dashboard">Live Dashboard</Link>
+          <div className="footer-column">
+            <h4 className="footer-title">Service</h4>
+            <Link href="#how-it-works">Product Resolution</Link>
+            <Link href="#how-it-works">How we deliver</Link>
+            <Link href="#how-it-works">How it works</Link>
+            <Link href="#the-solution">Customers</Link>
           </div>
-
-          <div className="footer-links-group">
-            <h4 className="footer-heading">Legal & Support</h4>
-            <Link href="/">Privacy Policy</Link>
-            <Link href="/">Terms of Service</Link>
+          <div className="footer-column">
+            <h4 className="footer-title">Platform</h4>
             <Link href="/submit">Submit Issue</Link>
+            <Link href="/track">Track Status</Link>
+            <Link href="/public-dashboard">Live Dashboard</Link>
             <Link href="/login" className="admin-link">Admin Portal</Link>
+          </div>
+          <div className="footer-column">
+            <h4 className="footer-title">Resources</h4>
+            <Link href="#">Careers</Link>
+            <Link href="#">Customer portal</Link>
+            <Link href="#">Sustainability</Link>
+            <Link href="#">Press/Media</Link>
+          </div>
+        </div>
+
+        <div className="footer-divider"></div>
+
+        <div className="footer-social-row">
+          <div className="footer-social-icons">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
           </div>
         </div>
         
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} SafeConnect. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <span style={{ color: '#0d9488' }}>Zero-Knowledge Proof Secured</span>
+        <div className="footer-bottom-info">
+          <div className="footer-copyright">
+            &copy; {new Date().getFullYear()} SafeConnect. All Rights Reserved.
           </div>
+          <div className="footer-legal-links">
+            <Link href="#">Term of use</Link>
+            <Link href="#">Privacy policy</Link>
+            <Link href="#">Cookies setting</Link>
+          </div>
+        </div>
+        
+        <div className="footer-huge-logo">
+          SAFECONNECT
         </div>
       </footer>
 
