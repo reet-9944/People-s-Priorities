@@ -243,9 +243,9 @@ export default function SubmitPage() {
                 <h1>{activeT.title}</h1>
                 <p>{activeT.subtitle}</p>
                 <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center' }}>
-                  <a href="https://wa.me/1234567890?text=I%20want%20to%20report%20an%20issue" target="_blank" rel="noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#25D366', color: 'white', padding: '0.8rem 1.5rem', borderRadius: '8px', fontWeight: 'bold', fontSize: '1.1rem', boxShadow: '0 4px 6px rgba(37, 211, 102, 0.2)' }}>
+                  <Link href="/whatsapp-mock" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#25D366', color: 'white', padding: '0.8rem 1.5rem', borderRadius: '8px', fontWeight: 'bold', fontSize: '1.1rem', boxShadow: '0 4px 6px rgba(37, 211, 102, 0.2)' }}>
                     <span>💬</span> {activeT.whatsappBtn}
-                  </a>
+                  </Link>
                 </div>
               </div>
 
