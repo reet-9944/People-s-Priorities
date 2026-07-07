@@ -1,47 +1,131 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getSubmissions } from '@/lib/store';
 
-const recommendedProjects = [
-  {
-    id: 1,
-    title: "Vocational Training Center vs. Primary School Upgrade",
-    location: "Sector 4, Block D",
-    score: 94,
-    decision: "Prioritize Vocational Center",
-    citizenDemand: "High (142 reports)",
-    infrastructureGap: "Critical",
-    demographicFit: "High (62% under age 25)",
-    justification: "AI analysis of multi-modal citizen reports (voice notes & text) indicates a severe lack of local employment opportunities. Overlaying local census data (youth bulge) and the master development plan strongly favors prioritizing the Vocational Center to address immediate unemployment over the school upgrade."
-  },
-  {
-    id: 2,
-    title: "Main Road Resurfacing vs. New Public Park",
-    location: "Market Road, Zone 2",
-    score: 88,
-    decision: "Prioritize Road Resurfacing",
-    citizenDemand: "Severe (210 reports, 45 photos)",
-    infrastructureGap: "High",
-    demographicFit: "Medium",
-    justification: "Computer vision analysis of 45 submitted photos confirms severe pothole degradation. NLP theme extraction shows high frustration affecting daily commerce. While the master plan includes a park, the immediate economic impact and citizen safety risk mandate urgent road repair."
-  },
-  {
-    id: 3,
+const projectTemplates = {
+  water: {
     title: "Water Purification Plant Expansion",
-    location: "East District Waterworks",
-    score: 82,
+    location: "District Waterworks",
+    baseScore: 60,
     decision: "Approve Expansion",
-    citizenDemand: "Moderate (85 reports)",
     infrastructureGap: "High (Current capacity at 95%)",
     demographicFit: "High (Growing residential zone)",
-    justification: "Though direct citizen complaints are moderate, predictive modeling based on recent residential development data and current plant capacity indicates a severe water shortage within 18 months if expansion is not prioritized now."
+    justificationTemplate: (count: number) => `AI analysis of ${count} real citizen reports concerning water supply indicates a severe shortage. Predictive modeling based on recent residential development data and current plant capacity mandates immediate expansion.`
+  },
+  roads: {
+    title: "Main Road Resurfacing & Repair",
+    location: "Major Transit Corridors",
+    baseScore: 65,
+    decision: "Prioritize Road Resurfacing",
+    infrastructureGap: "Critical",
+    demographicFit: "Medium",
+    justificationTemplate: (count: number) => `Analysis of ${count} submitted citizen reports confirms severe pothole and road degradation. The immediate economic impact and citizen safety risk mandate urgent road repair over long-term beautification.`
+  },
+  health: {
+    title: "New Primary Health Clinic",
+    location: "Underserved Sectors",
+    baseScore: 70,
+    decision: "Prioritize Clinic Construction",
+    infrastructureGap: "Severe (Nearest hospital >15km)",
+    demographicFit: "High (High elderly population)",
+    justificationTemplate: (count: number) => `NLP theme extraction from ${count} healthcare-related complaints shows critical frustration with medical access. Overlaying local census data (aging population) strongly favors prioritizing a new health clinic.`
+  },
+  education: {
+    title: "Primary School Digital Upgrade",
+    location: "Sector 4",
+    baseScore: 55,
+    decision: "Fund Digital Upgrade",
+    infrastructureGap: "Medium",
+    demographicFit: "High (62% under age 25)",
+    justificationTemplate: (count: number) => `Based on ${count} education requests and local census data (youth bulge), funding a digital upgrade for primary schools will provide the highest long-term ROI for the community's youth.`
+  },
+  waste: {
+    title: "Automated Waste Management System",
+    location: "City-wide",
+    baseScore: 50,
+    decision: "Implement Smart Bins",
+    infrastructureGap: "Medium",
+    demographicFit: "High",
+    justificationTemplate: (count: number) => `With ${count} reports regarding waste and sanitation, the AI recommends deploying an automated waste management system to optimize collection routes and improve public hygiene.`
+  },
+  safety: {
+    title: "Smart Street Lighting & CCTV",
+    location: "High-Risk Zones",
+    baseScore: 60,
+    decision: "Deploy Smart Lighting",
+    infrastructureGap: "High",
+    demographicFit: "High",
+    justificationTemplate: (count: number) => `Analysis of ${count} public safety reports correlates heavily with poorly lit areas. Deploying smart street lighting and CCTV is recommended to immediately reduce crime rates.`
   }
-];
+};
 
 export default function AiPlanner() {
+  const [recommendedProjects, setRecommendedProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    const submissions = getSubmissions();
+    
+    // Group by category
+    const categoryCounts: Record<string, number> = {};
+    submissions.forEach(sub => {
+      const cat = sub.category;
+      if (['water', 'roads', 'health', 'education', 'waste', 'safety'].includes(cat)) {
+        categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+      }
+    });
+
+    // Generate dynamic projects
+    const dynamicProjects = Object.keys(categoryCounts).map(cat => {
+      const count = categoryCounts[cat];
+      const template = projectTemplates[cat as keyof typeof projectTemplates];
+      const dynamicScore = Math.min(99, template.baseScore + (count * 5));
+      
+      let demandText = "Low";
+      if (count > 10) demandText = "Critical";
+      else if (count > 5) demandText = "Severe";
+      else if (count > 2) demandText = "High";
+      else if (count > 0) demandText = "Moderate";
+
+      return {
+        id: cat,
+        title: template.title,
+        location: template.location,
+        score: dynamicScore,
+        decision: template.decision,
+        citizenDemand: `${demandText} (${count} verified reports)`,
+        infrastructureGap: template.infrastructureGap,
+        demographicFit: template.demographicFit,
+        justification: template.justificationTemplate(count)
+      };
+    });
+
+    // Sort by score descending
+    dynamicProjects.sort((a, b) => b.score - a.score);
+    
+    // If we don't have enough dynamic projects, pad with some defaults
+    if (dynamicProjects.length === 0) {
+      setRecommendedProjects([
+        {
+          id: 'default-1',
+          title: "Vocational Training Center",
+          location: "Sector 4, Block D",
+          score: 45,
+          decision: "Awaiting Citizen Data",
+          citizenDemand: "Insufficient Data (0 reports)",
+          infrastructureGap: "Moderate",
+          demographicFit: "High (62% under age 25)",
+          justification: "Waiting for citizen submissions to generate real recommendations. Currently relying only on static census data which indicates a need for youth employment training."
+        }
+      ]);
+    } else {
+      setRecommendedProjects(dynamicProjects.slice(0, 3)); // Top 3
+    }
+  }, []);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBottom: '2rem' }}>
       <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0', borderLeft: '4px solid #8b5cf6' }}>
         <h2 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span>✨</span> AI Project Prioritization Engine
+          <span>✨</span> AI Project Prioritization Engine (Live Dynamic Data)
         </h2>
         <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: 1.5 }}>
           The AI engine cross-references live citizen demand (voice, text, photo submissions) with local demographic data, existing infrastructure gaps, and master development plans to recommend the highest-impact projects for the constituency.
