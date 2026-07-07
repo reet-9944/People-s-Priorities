@@ -6,6 +6,99 @@ import './submit.css';
 
 export default function SubmitPage() {
   const [step, setStep] = useState(1);
+
+  const [lang, setLang] = useState('en');
+  const t = {
+    en: {
+      cancel: '← Cancel & Back to Home',
+      title: 'Report a Development Need',
+      subtitle: 'Anonymously share issues in your constituency.',
+      step1: 'Issue Category',
+      step2: 'Details & Location',
+      step3: 'Verification',
+      stepOf: 'Step',
+      selectCat: 'Select a Category',
+      otherCat: 'What is the issue?',
+      next: 'Next Step',
+      describe: 'Describe the issue (Optional)',
+      descPlaceholder: 'Provide details about the problem...',
+      attach: '{activeT.attach}',
+      record: '{activeT.record}',
+      recording: 'Recording',
+      stop: '{activeT.stop}',
+      detectedLoc: 'Location Detected',
+      detectLoc: '{activeT.detectLoc}',
+      submitBtn: '{activeT.submitBtn}',
+      whatsappBtn: 'Submit via WhatsApp',
+      generatingProof: '{activeT.generatingProof}',
+      proofReady: '{activeT.proofReady}',
+      success: 'Submission Confirmed',
+      successSub: 'Your report has been securely verified and added to the public dashboard.',
+      trackingText: 'Your Anonymous Tracking ID:',
+      copyInfo: 'Save this ID. You can use it to track the status of this issue on the homepage without revealing your identity.',
+      returnHome: '{activeT.returnHome}'
+    },
+    hi: {
+      cancel: '← रद्द करें और होम पर वापस जाएं',
+      title: 'विकास की आवश्यकता की रिपोर्ट करें',
+      subtitle: 'अपने क्षेत्र में समस्याओं को गुमनाम रूप से साझा करें।',
+      step1: 'समस्या श्रेणी',
+      step2: 'विवरण और स्थान',
+      step3: 'सत्यापन',
+      stepOf: 'चरण',
+      selectCat: 'एक श्रेणी चुनें',
+      otherCat: 'समस्या क्या है?',
+      next: 'अगला कदम',
+      describe: 'समस्या का वर्णन करें (वैकल्पिक)',
+      descPlaceholder: 'समस्या के बारे में विवरण प्रदान करें...',
+      attach: 'फोटो/वीडियो संलग्न करें',
+      record: 'वॉयस नोट रिकॉर्ड करें',
+      recording: 'रिकॉर्डिंग',
+      stop: 'रिकॉर्डिंग रोकें',
+      detectedLoc: 'स्थान का पता चला',
+      detectLoc: '📍 स्थान का पता लगाने के लिए टैप करें (आवश्यक)',
+      submitBtn: 'ZKP के माध्यम से सुरक्षित रूप से सबमिट करें',
+      whatsappBtn: 'WhatsApp के माध्यम से सबमिट करें',
+      generatingProof: 'शून्य-ज्ञान प्रमाण उत्पन्न किया जा रहा है...',
+      proofReady: 'प्रमाण उत्पन्न! सबमिट करने के लिए तैयार।',
+      success: 'सबमिशन की पुष्टि हुई',
+      successSub: 'आपकी रिपोर्ट सुरक्षित रूप से सत्यापित की गई है और सार्वजनिक डैशबोर्ड में जोड़ दी गई है।',
+      trackingText: 'आपकी अनाम ट्रैकिंग आईडी:',
+      copyInfo: 'इस आईडी को सहेजें। आप अपनी पहचान बताए बिना इस समस्या की स्थिति को ट्रैक करने के लिए इसका उपयोग कर सकते हैं।',
+      returnHome: 'होमपेज पर लौटें'
+    },
+    ta: {
+      cancel: '← ரத்து செய் & முகப்புக்கு திரும்பு',
+      title: 'ஒரு மேம்பாட்டு தேவையை புகாரளிக்கவும்',
+      subtitle: 'உங்கள் தொகுதியில் உள்ள சிக்கல்களை அநாமதேயமாக பகிரவும்.',
+      step1: 'சிக்கல் வகை',
+      step2: 'விவரங்கள் & இடம்',
+      step3: 'சரிபார்ப்பு',
+      stepOf: 'படி',
+      selectCat: 'ஒரு வகையைத் தேர்ந்தெடுக்கவும்',
+      otherCat: 'பிரச்சனை என்ன?',
+      next: 'அடுத்த படி',
+      describe: 'சிக்கலை விவரிக்கவும் (விருப்பம்)',
+      descPlaceholder: 'சிக்கலைப் பற்றிய விவரங்களை வழங்கவும்...',
+      attach: 'புகைப்படம்/வீடியோவை இணைக்கவும்',
+      record: 'குரல் குறிப்பை பதிவு செய்யவும்',
+      recording: 'பதிவு செய்யப்படுகிறது',
+      stop: 'பதிவை நிறுத்து',
+      detectedLoc: 'இடம் கண்டறியப்பட்டது',
+      detectLoc: '📍 இடத்தை கண்டறிய தட்டவும் (தேவை)',
+      submitBtn: 'ZKP மூலம் பாதுகாப்பாக சமர்ப்பிக்கவும்',
+      whatsappBtn: 'WhatsApp மூலம் சமர்ப்பிக்கவும்',
+      generatingProof: 'Zero-Knowledge Proof உருவாக்கப்படுகிறது...',
+      proofReady: 'Proof உருவாக்கப்பட்டது! சமர்ப்பிக்க தயார்.',
+      success: 'சமர்ப்பிப்பு உறுதிப்படுத்தப்பட்டது',
+      successSub: 'உங்கள் அறிக்கை பாதுகாப்பாக சரிபார்க்கப்பட்டு பொது டாஷ்போர்டில் சேர்க்கப்பட்டுள்ளது.',
+      trackingText: 'உங்கள் அநாமதேய கண்காணிப்பு ஐடி:',
+      copyInfo: 'இந்த ஐடியை சேமிக்கவும். உங்கள் அடையாளத்தை வெளிப்படுத்தாமல் இந்த சிக்கலின் நிலையை கண்காணிக்க இதைப் பயன்படுத்தலாம்.',
+      returnHome: 'முகப்புப் பக்கத்திற்குத் திரும்பு'
+    }
+  };
+  const activeT = t[lang as keyof typeof t];
+
   const [selectedCategory, setSelectedCategory] = useState("");
   const [trackingId, setTrackingId] = useState("");
   const [customCategory, setCustomCategory] = useState("");
@@ -126,11 +219,19 @@ export default function SubmitPage() {
   return (
     <div className="submit-layout">
       {/* Standard Navbar */}
+      
       <nav className="submit-navbar">
          <div className="logo-area">
           <span style={{ color: '#0d9488' }}>🛡️</span> SafeConnect
         </div>
-        <Link href="/" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: 500 }}>← Cancel & Back to Home</Link>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <select value={lang} onChange={(e) => setLang(e.target.value)} style={{ padding: '0.2rem', borderRadius: '4px', background: '#334155', color: '#fff', border: '1px solid #475569' }}>
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="ta">தமிழ்</option>
+          </select>
+          <Link href="/" style={{ color: '#cbd5e1', textDecoration: 'none', fontWeight: 500 }}>{activeT.cancel}</Link>
+        </div>
       </nav>
 
       <main className="submit-container">
@@ -139,12 +240,12 @@ export default function SubmitPage() {
           {step < 4 && (
             <>
               <div className="form-header">
-                <h1>Report a Development Need</h1>
-                <p>Anonymously share issues in your constituency.</p>
+                <h1>{activeT.title}</h1>
+                <p>{activeT.subtitle}</p>
               </div>
 
               <div className="progress-container">
-                 <div className="progress-text">Step {step} of 3: {step === 1 ? 'Issue Category' : step === 2 ? 'Details & Location' : 'Verification'}</div>
+                 <div className="progress-text">{activeT.stepOf} {step} of 3: {step === 1 ? activeT.step1 : step === 2 ? activeT.step2 : activeT.step3}</div>
                  <div className="progress-bar-wrapper">
                     <div className={`progress-segment ${step >= 1 ? 'active' : ''}`}></div>
                     <div className={`progress-segment ${step >= 2 ? 'active' : ''}`}></div>

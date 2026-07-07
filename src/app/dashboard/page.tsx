@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getSubmissions, Submission, updateSubmissionStatus } from "@/lib/store";
 import dynamic from "next/dynamic";
+import AiPlanner from "@/components/AiPlanner";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, CartesianGrid } from 'recharts';
 
 const DashboardMap = dynamic(() => import("@/components/Map"), { 
@@ -188,6 +189,10 @@ export default function Dashboard() {
           <div className={`menu-item ${currentView === 'analytics' ? 'active' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('analytics'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'analytics' ? '3px solid #0d9488' : 'none' }}>
             <span>📊</span> Analytics
           </div>
+          <div className={`menu-item ${currentView === 'planner' ? 'active' : ''}`} onClick={() => { setIsMobileMenuOpen(false); setCurrentView('planner'); setSelectedFilter(null); }} style={{ borderLeft: currentView === 'planner' ? '3px solid #0d9488' : 'none' }}>
+            <span>🤖</span> AI Recommendations
+          </div>
+
         </div>
       </aside>
 
@@ -232,7 +237,7 @@ export default function Dashboard() {
           <div className="dashboard-header">
             <div>
               <h1 className="page-title">
-                {currentView === 'analytics' ? 'Analytics & Insights' : 
+                {currentView === 'planner' ? 'AI Project Prioritization' : currentView === 'analytics' ? 'Analytics & Insights' : 
                  (selectedFilter ? `Filtered: ${dynamicThemes.find(t => t.id === selectedFilter)?.label || 'Other'}` : 'Constituency Demand Overview')}
               </h1>
               <p className="page-subtitle">Live Data &bull; {submissions.length} Total Reports Displayed</p>
@@ -346,6 +351,8 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+          ) : currentView === 'planner' ? (
+            <AiPlanner />
           ) : (
             /* Analytics View */
             <div className="analytics-container">
