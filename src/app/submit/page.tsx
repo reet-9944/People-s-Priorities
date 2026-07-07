@@ -427,7 +427,8 @@ export default function SubmitPage() {
                     location: locationText || 'Unknown Location',
                     lat: coords?.lat,
                     lon: coords?.lon,
-                    description: description || 'No description provided'
+                    description: description || 'No description provided',
+                    supports: 0
                   });
                   setTrackingId(id);
                   setStep(4);
