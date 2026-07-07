@@ -157,7 +157,7 @@ export default function SubmitPage() {
       mediaRecorderRef.current.stop();
     }
     if (mediaRecorderRef.current && mediaRecorderRef.current.stream) {
-      // @ts-expect-error
+
       mediaRecorderRef.current.stream.getTracks().forEach(track => track.stop());
     }
     setIsRecording(false);

@@ -16,7 +16,7 @@ const DashboardMap = dynamic(() => import("@/components/Map"), {
 export default function Dashboard() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
-  const [currentView, setCurrentView] = useState<'overview' | 'analytics'>('overview');
+  const [currentView, setCurrentView] = useState<'overview' | 'analytics' | 'planner'>('overview');
   
   // Auth state
   const router = useRouter();
